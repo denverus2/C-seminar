@@ -36,21 +36,21 @@ void PrintMatrix(int[,] matrix)
   }
 }
 
-int [,] DeleteMinColRow (int [,] matrix)
+int[,] DeleteMinColRow(int[,] matrix)
 {
-  int [,] newMatrix = new int [matrix.GetLength(0)-1, matrix.GetLength(1)-1];
-  int min = matrix [0,0];
+  int[,] newMatrix = new int[matrix.GetLength(0) - 1, matrix.GetLength(1) - 1];
+  int min = matrix[0, 0];
   int minCol = 0;
   int minRow = 0;
   for (int i = 0; i < matrix.GetLength(0); i++)
   {
     for (int j = 0; j < matrix.GetLength(1); j++)
     {
-      if (matrix[i,j] < min)
+      if (matrix[i, j] < min)
       {
-        min= matrix [i,j];
-        minRow=i;
-        minCol=j;
+        min = matrix[i, j];
+        minRow = i;
+        minCol = j;
 
       }
     }
@@ -60,26 +60,30 @@ int [,] DeleteMinColRow (int [,] matrix)
   {
     for (int j = 0; j < newMatrix.GetLength(1); j++)
     {
-      if (i<minRow&&j<minCol)
+      if (i < minRow && j < minCol)
       {
-      newMatrix[i,j]=matrix [i,j];
+        newMatrix[i, j] = matrix[i, j];
       }
-      else if (i<minRow && j>=minCol)
+      else if (i < minRow && j >= minCol)
       {
-        newMatrix[i,j]=matrix [i,j+1];
+        newMatrix[i, j] = matrix[i, j + 1];
+      }
+      else if (i >= minRow && j < minCol)
+      {
+        newMatrix[i, j] = matrix[i + 1, j];
       }
       else
       {
-        newMatrix[i,j]=matrix [i+1,j+1];
+        newMatrix[i, j] = matrix[i + 1, j + 1];
       }
 
-   
+
     }
-    
+
 
   }
-  
-return newMatrix;
+
+  return newMatrix;
 }
 
 
